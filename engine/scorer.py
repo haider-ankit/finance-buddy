@@ -60,7 +60,7 @@ def calculate_health_score(profile: MSMEDataPayload) -> HealthScoreOutput:
     overall_score = int(((upi_score * 0.6) + (gst_score * 0.4)) * 10) 
     
     # Simple Decision Engine
-    # decision = "MANUAL_REVIEW"
+    decision = "MANUAL_REVIEW"
     # if overall_score > 750 and not any(flag.severity == "CRITICAL" for flag in risk_flags):
     #     decision = "APPROVED"
     # elif overall_score < 400 or any(flag.severity == "CRITICAL" for flag in risk_flags):
@@ -70,7 +70,7 @@ def calculate_health_score(profile: MSMEDataPayload) -> HealthScoreOutput:
         merchant_id=profile.merchant_id,
         business_name=profile.business_name,
         overall_health_score=overall_score,
-        # credit_decision=decision,
+        credit_decision=decision,
         metrics=ScoreMetrics(
             upi_velocity_score=upi_score,
             gst_compliance_score=gst_score,

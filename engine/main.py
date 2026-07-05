@@ -17,7 +17,7 @@ app = FastAPI(
 # is allowed to fetch data from this Python API (running on port 8000).
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"], 
+    allow_origins=["http://localhost:3000", "192.168.1.6:3000"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -51,7 +51,7 @@ class HealthScoreOutput(BaseModel):
     merchant_id: str
     business_name: str
     overall_health_score: int = Field(..., ge=0, le=1000)
-    # credit_decision: str = Field(..., pattern="^(APPROVED|MANUAL_REVIEW|REJECTED)$")
+    credit_decision: str = Field(..., pattern="^(APPROVED|MANUAL_REVIEW|REJECTED)$")
     metrics: ScoreMetrics
     risk_flags: List[RiskFlag]
     strengths: List[str]
