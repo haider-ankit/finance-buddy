@@ -13,4 +13,3 @@ wheels/
 *.bat
 *.vbs
 test.py
-*.json
