@@ -1,10 +1,10 @@
-# IDBI Innovate 2026: MSME Financial Health Card (CredShield)
+# IDBI Innovate 2026: MSME Financial Health Card (FinanceBuddy)
 
 ## 📌 The Problem
 New-to-Credit (NTC) and New-to-Bank (NTB) MSMEs are frequently rejected for crucial credit lines due to a lack of traditional documentation (audited balance sheets, multi-year ITRs). Despite having a rich digital footprint across India's Digital Public Infrastructure (DPI), there is no unified framework to assess this alternate data.
 
 ## 💡 The Solution
-CredShield is an AI/ML-driven multidimensional credit evaluation engine. It bypasses traditional paperwork by aggregating consent-driven alternate data (UPI velocity, GST filing consistency, and EPFO stability) to generate a near real-time **Financial Health Score**.
+FinanceBuddy is an AI/ML-driven multidimensional credit evaluation engine. It bypasses traditional paperwork by aggregating consent-driven alternate data (UPI velocity, GST filing consistency, and EPFO stability) to generate a near real-time **Financial Health Score**.
 
 ## 🏗️ Architecture & Interface-Driven Design
 To ensure rapid iteration and zero-downtime frontend testing prior to receiving official IDBI sandbox access, this architecture utilizes an **Interface-Driven Design** with a decoupled Mock Data Adapter.
