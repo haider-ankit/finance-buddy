@@ -10,5 +10,5 @@ wheels/
 .venv
 
 # System files
-.bat
-.vbs
+*.bat
+*.vbs
