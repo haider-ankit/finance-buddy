@@ -1,4 +1,3 @@
-// dashboard/components/HealthGauge.tsx
 import React, { useEffect, useState } from 'react';
 
 interface HealthGaugeProps {
@@ -16,17 +15,21 @@ export default function HealthGauge({ score, decision, maxScore = 100 }: HealthG
     return () => clearTimeout(timer);
   }, [score]);
 
-  // Determine colors based on the decision
-  const isApproved = decision === "APPROVED";
-  const isRejected = decision === "REJECTED";
-  
-  const colorClass = isApproved ? "text-green-500" : isRejected ? "text-red-500" : "text-yellow-500";
-  const bgClass = isApproved ? "bg-green-50 border-green-200 text-green-700" : isRejected ? "bg-red-50 border-red-200 text-red-700" : "bg-yellow-50 border-yellow-200 text-yellow-700";
-
   // SVG Math for the semi-circle
   const radius = 80;
-  const circumference = Math.PI * radius; // Half circle length
+  const circumference = Math.PI * radius;
   const strokeDashoffset = circumference - (circumference * (animatedScore / maxScore));
+
+  // --- Dynamic Color Math ---
+  // Clamp the ratio between 0 and 1, just in case
+  const scoreRatio = Math.min(Math.max(animatedScore / maxScore, 0), 1);
+  
+  // Map the ratio to a Hue (0 = Red, 120 = Green)
+  const hue = Math.floor(scoreRatio * 120);
+  
+  // Construct dynamic CSS HSL strings
+  const dynamicColor = `hsl(${hue}, 85%, 45%)`;
+  const dynamicBgColor = `hsla(${hue}, 85%, 45%, 0.1)`; // 10% opacity for the pill background
 
   return (
     <div className="flex flex-col items-center justify-center relative w-full max-w-xs mx-auto">
@@ -44,8 +47,8 @@ export default function HealthGauge({ score, decision, maxScore = 100 }: HealthG
         <path
           d="M 20 100 a 80 80 0 0 1 160 0"
           fill="none"
-          className={`${colorClass} transition-all duration-1000 ease-out`}
-          stroke="currentColor"
+          className="transition-all duration-1000 ease-out"
+          stroke={dynamicColor}
           strokeWidth="16"
           strokeLinecap="round"
           strokeDasharray={circumference}
@@ -55,15 +58,25 @@ export default function HealthGauge({ score, decision, maxScore = 100 }: HealthG
 
       {/* Center Text (Score) */}
       <div className="absolute top-[40%] flex flex-col items-center text-center">
-        <span className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">Health Card</span>
-        <span className={`text-5xl font-black ${colorClass}`}>
+        <span className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">CredShield</span>
+        <span 
+          className="text-5xl font-black transition-colors duration-1000 ease-out"
+          style={{ color: dynamicColor }}
+        >
           {animatedScore}
         </span>
         <span className="text-gray-400 text-sm mt-1">/ {maxScore}</span>
       </div>
 
       {/* Decision Pill */}
-      <div className={`mt-6 px-6 py-2 rounded-full text-sm font-bold border shadow-sm ${bgClass}`}>
+      <div 
+        className="mt-6 px-6 py-2 rounded-full text-sm font-bold border shadow-sm transition-colors duration-1000 ease-out uppercase tracking-wide"
+        style={{ 
+          color: dynamicColor, 
+          borderColor: dynamicColor, 
+          backgroundColor: dynamicBgColor 
+        }}
+      >
         {decision.replace("_", " ")}
       </div>
     </div>

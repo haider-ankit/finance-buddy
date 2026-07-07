@@ -72,7 +72,6 @@ export default function HealthCardPage() {
           </div>
 
           {/* Master Decision Card */}
-          {/* Master Decision Card */}
           <div className="p-6 rounded-xl shadow-sm border border-gray-100 bg-white flex flex-col justify-center items-center h-full">
             <HealthGauge 
               score={data.overall_health_score} 
