@@ -8,6 +8,7 @@ import {
   ShieldCheck, AlertTriangle, CheckCircle, 
   Activity, FileText, Users, ArrowLeft 
 } from "lucide-react";
+import HealthGauge from "../../../components/HealthGauge";
 
 export default function HealthCardPage() {
   const params = useParams();
@@ -71,7 +72,15 @@ export default function HealthCardPage() {
           </div>
 
           {/* Master Decision Card */}
-          <div className={`p-6 rounded-xl shadow-sm border flex flex-col justify-center items-center text-center ${
+          {/* Master Decision Card */}
+          <div className="p-6 rounded-xl shadow-sm border border-gray-100 bg-white flex flex-col justify-center items-center h-full">
+            <HealthGauge 
+              score={data.overall_health_score} 
+              decision={data.credit_decision}
+              maxScore={1000} // Change to 900 if your AI engine scales it to 900
+            />
+          </div>
+          {/* <div className={`p-6 rounded-xl shadow-sm border flex flex-col justify-center items-center text-center ${
             data.credit_decision === "APPROVED" ? "bg-green-50 border-green-200" :
             data.credit_decision === "REJECTED" ? "bg-red-50 border-red-200" :
             "bg-yellow-50 border-yellow-200"
@@ -91,7 +100,7 @@ export default function HealthCardPage() {
             }`}>
               {data.credit_decision.replace("_", " ")}
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Strengths & Risks Row */}
