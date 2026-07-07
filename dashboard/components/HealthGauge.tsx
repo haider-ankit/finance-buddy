@@ -58,7 +58,7 @@ export default function HealthGauge({ score, decision, maxScore = 100 }: HealthG
 
       {/* Center Text (Score) */}
       <div className="absolute top-[40%] flex flex-col items-center text-center">
-        <span className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">CredShield</span>
+        <span className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">Health Card</span>
         <span 
           className="text-5xl font-black transition-colors duration-1000 ease-out"
           style={{ color: dynamicColor }}
