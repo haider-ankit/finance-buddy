@@ -76,7 +76,7 @@ export default function HealthCardPage() {
             data.credit_decision === "REJECTED" ? "bg-red-50 border-red-200" :
             "bg-yellow-50 border-yellow-200"
           }`}>
-            <div className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">CredShield Score</div>
+            <div className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Health Card Score</div>
             <div className={`text-6xl font-black mb-4 ${
               data.credit_decision === "APPROVED" ? "text-green-600" :
               data.credit_decision === "REJECTED" ? "text-red-600" :
